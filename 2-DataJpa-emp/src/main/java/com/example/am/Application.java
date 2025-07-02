@@ -12,17 +12,17 @@ public class Application {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
 		EmpService service = context.getBean(EmpService.class);
-		//service.saveEmp();
-		//service.saveEmps();
-		//service.findEmpById();
-		//service.findEmpAllById();
-		//service.findAllEmp();
-		//service.empExists();
-		//service.listEmpl();
-		//service.deleteEmpById();
-		//service.deleteAllEmpById();
-		//service.deleteAllEmp();
-		//service.deleteAllEmpItrator();
+		service.saveEmp();
+		service.saveEmps();
+		service.findEmpById();
+		service.findEmpAllById();
+		service.findAllEmp();
+		service.empExists();
+		service.listEmpl();
+		service.deleteEmpById();
+		service.deleteAllEmpById();
+		service.deleteAllEmp();
+		service.deleteAllEmpItrator();
 		service.deleteAllEmpstruncate();
 	}
 
