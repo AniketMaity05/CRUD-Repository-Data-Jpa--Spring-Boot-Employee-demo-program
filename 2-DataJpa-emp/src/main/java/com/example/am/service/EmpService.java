@@ -1,0 +1,111 @@
+package com.example.am.service;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.example.am.Repo.EmpRepository;
+import com.example.am.entity.Employee;
+
+@Service
+public class EmpService {
+	 EmpRepository repo;
+	public EmpService(EmpRepository repo) {
+		this.repo=repo;
+		System.out.println(this.repo.getClass().getName());
+	}
+	
+	public void saveEmp() {
+		Employee e=new Employee();
+		e.setEmp_Id(11011);
+		e.setEmp_Name("Aniket");
+		e.setEmp_Salary(90000.00);
+		repo.save(e);
+	}
+	public void saveEmps() {
+		Employee e1=new Employee();
+		e1.setEmp_Id(11015);
+		e1.setEmp_Name("Sam");
+		e1.setEmp_Salary(78000.00);
+		
+		Employee e2=new Employee();
+		e2.setEmp_Id(11016);
+		e2.setEmp_Name("Manshi");
+		e2.setEmp_Salary(56000.00);
+		
+		Employee e3=new Employee();
+		e3.setEmp_Id(11017);
+		e3.setEmp_Name("Shivangi");
+		e3.setEmp_Salary(70000.00);
+		
+		List<Employee> list = Arrays.asList(e1,e2,e3);
+		repo.saveAll(list);
+		
+	}
+	public void findEmpById() {
+		Optional<Employee> id = repo.findById(11012);
+		System.out.println(id);
+		if(id.isPresent()) {
+			Employee employee = id.get();
+			System.out.println(employee);
+		}
+	}
+	
+	public void findEmpAllById() {
+		List<Integer> list = Arrays.asList(11011,11013);
+		Iterable<Employee> allById = repo.findAllById(list);
+		System.out.println(allById);
+		for(Employee e: allById) {
+			System.out.println(e);
+		}
+			
+	}
+		public void findAllEmp() {
+			Iterable<Employee> all = repo.findAll();
+			all.forEach(System.out::println);
+		}
+		
+		public void empExists() {
+			boolean existsById = repo.existsById(11015);
+			System.out.println(existsById);
+		}
+		public void listEmpl() {
+			long count = repo.count();
+			System.out.println(count);
+		}
+		
+		public void deleteEmpById() {
+			repo.deleteById(11016);
+		}
+		
+		public void deleteAllEmpById() {
+			List<Integer> asList = Arrays.asList(11017,11015);
+			repo.deleteAllById(asList);
+		}
+		public void deleteAllEmp() {
+			Employee e3=new Employee();
+			e3.setEmp_Id(11017);
+			e3.setEmp_Name("Shivangi");
+			e3.setEmp_Salary(70000.00);
+			repo.delete(e3);
+		}
+		public void deleteAllEmpItrator() {
+			Employee e1=new Employee();
+			e1.setEmp_Id(11015);
+			e1.setEmp_Name("Sam");
+			e1.setEmp_Salary(78000.00);
+			
+			Employee e2=new Employee();
+			e2.setEmp_Id(11016);
+			e2.setEmp_Name("Manshi");
+			e2.setEmp_Salary(56000.00);
+			List<Employee> asList = Arrays.asList(e2,e1);
+			repo.deleteAll(asList);
+		}
+		public void deleteAllEmpstruncate() {
+			repo.deleteAll();
+		}
+}
+

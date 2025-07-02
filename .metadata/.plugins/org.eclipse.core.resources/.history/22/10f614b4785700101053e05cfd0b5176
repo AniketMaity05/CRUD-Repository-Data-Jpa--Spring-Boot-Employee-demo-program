@@ -1,0 +1,22 @@
+package com.example.am;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.example.am.entity.Book;
+import com.example.am.repo.BookRepo;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+		BookRepo bean = context.getBean(BookRepo.class);
+		System.out.println(bean.getClass().getName());
+		
+		Book b=new Book();
+		b.se
+	}
+
+}

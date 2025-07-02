@@ -1,0 +1,23 @@
+package com.example.am.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.am.Repo.EmpRepository;
+import com.example.am.entity.Employee;
+
+@Service
+public class EmpService {
+	 EmpRepository repo;
+	public EmpService(EmpRepository repo) {
+		this.repo=repo;
+		System.out.println(this.repo.getClass().getName());
+	}
+	
+	public void saveEmp() {
+		Employee e=new Employee();
+		e.setEmp_Id(11011);
+		e.setEmp_Name("Aniket");
+		e.setEmp_Salary(90000.00);
+		repo.save(e);
+	}
+}

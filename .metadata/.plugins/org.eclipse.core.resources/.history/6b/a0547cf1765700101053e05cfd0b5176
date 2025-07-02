@@ -1,0 +1,22 @@
+package com.example.am.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@ToString
+@Setter
+@Getter
+public class Book {
+	
+	
+	@Id
+	private Integer bookId;
+	private String bookName;
+	private Double bookPrice;
+	
+	
+}
